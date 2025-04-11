@@ -239,7 +239,7 @@ class IPv4DatagramServer(Server[PDU]):
         elif isinstance(pdu.pduDestination, LocalBroadcast):
             if not self.broadcast_address:
                 raise RuntimeError("no broadcast")
-            pdu_destination = self.broadcast_address
+            pdu_destination = (self.broadcast_address[0], 47808)
         elif isinstance(pdu.pduDestination, IPv4Address):
             pdu_destination = pdu.pduDestination.addrTuple
         else:
